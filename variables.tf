@@ -15,7 +15,7 @@ variable "zone" {
 # Project ID
 variable "project_id" {
   type = string
-  default = "petdoc-capstone-project"
+  default = "docpet-project-ch2-ps068"
   description = "Project ID <type: String>"
 }
 

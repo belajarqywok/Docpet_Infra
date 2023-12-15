@@ -1,5 +1,5 @@
 create_bucket:
-	gsutil mb -p petdoc-capstone-project -l asia-southeast2 gs://alerting-service-bucket
+	gsutil mb -p docpet-project-ch2-ps068 -l asia-southeast2 gs://docpet-infra
 
 create_function_manual:
 	gcloud functions deploy discord-alerting \

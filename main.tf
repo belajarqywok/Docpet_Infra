@@ -9,8 +9,7 @@ terraform {
   }
 
   backend "gcs" {
-    bucket  = "alerting-service-bucket"
-    prefix  = "function"
+    bucket  = "docpet-infra"
   }
 }
 
