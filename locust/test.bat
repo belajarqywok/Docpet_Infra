@@ -1,0 +1,1 @@
+locust --headless --run-time 10s --users 100 --spawn-rate 10 -H http://192.168.137.1:3000 --locustfile locust/configuration.py
