@@ -1,0 +1,1677 @@
+{
+	"info": {
+		"_postman_id": "8fd1d227-9c44-4070-92b8-df8f8b7b85b8",
+		"name": "docpet_collections",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 201', () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    \r",
+									"    // Name\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('name');\r",
+									"    pm.expect(responseJson.name).to.be.an('string');\r",
+									"\r",
+									"    // Email\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('email');\r",
+									"    pm.expect(responseJson.email).to.be.an('string');\r",
+									"\r",
+									"    // ID\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('id');\r",
+									"    pm.expect(responseJson.id).to.be.an('string');\r",
+									"\r",
+									"    // Created At\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('created_at');\r",
+									"    pm.expect(responseJson.created_at).to.be.an('string');\r",
+									"\r",
+									"    // Updated At\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('updated_at');\r",
+									"    pm.expect(responseJson.updated_at).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Al-fariqy Raihan Azhwar\",\r\n  \"email\": \"alfariqyraihan@gmail.com\",\r\n  \"password\": \"MancingSkuyG@an2468\",\r\n  \"passwordConfirm\": \"MancingSkuyG@an2468\",\r\n  \"role\": \"user\",\r\n  \"verified\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/auth/register",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Al-fariqy Raihan Azhwar\",\r\n  \"email\": \"alfariqyraihan@gmail.com\",\r\n  \"password\": \"MancingSkuyG@an2468\",\r\n  \"passwordConfirm\": \"MancingSkuyG@an2468\",\r\n  \"role\": \"user\",\r\n  \"verified\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://docpet-service-rnjlx2stlq-et.a.run.app/api/auth/register",
+									"protocol": "https",
+									"host": [
+										"docpet-service-rnjlx2stlq-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "1ffc6ca97b21eb2fe31bce74ee43023f;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Dec 2023 14:49:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "209"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Al-fariqy Raihan Azhwar\",\n    \"email\": \"alfariqyraihan@gmail.com\",\n    \"id\": \"ececc2ed-0dce-4ec2-84c8-d6df67a351b6\",\n    \"created_at\": \"2023-12-04T14:49:35.058771+00:00\",\n    \"updated_at\": \"2023-12-04T14:49:35.058771+00:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    \r",
+									"    // Status\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+									"    pm.expect(responseJson.status).to.be.an('string');\r",
+									"    pm.expect(responseJson.status).to.equals('success');\r",
+									"\r",
+									"    // Access Token\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('access_token');\r",
+									"    pm.expect(responseJson.access_token).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"alfariqyraihan@gmail.com\",\r\n  \"password\": \"MancingSkuyG@an2468\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/auth/login",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"alfariqyraihan@gmail.com\",\r\n  \"password\": \"MancingSkuyG@an2468\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{host}}/api/auth/login",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "set-cookie",
+									"value": "access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlY2VjYzJlZC0wZGNlLTRlYzItODRjOC1kNmRmNjdhMzUxYjYiLCJpYXQiOjE3MDE3MDE5ODYsIm5iZiI6MTcwMTcwMTk4NiwianRpIjoiZmIzZjMzYjctNjlmMS00MDUwLWE4YzctN2Q0Mjk0NDc4NzJlIiwiZXhwIjoxNzAxNzAyODg2LCJ0eXBlIjoiYWNjZXNzIiwiZnJlc2giOmZhbHNlfQ.WzyaOMFlSc4-GzXgCKShLK71T-EsxRY4292MF1Hl0cRR37yTIIO9Y3N-Q3Dtf2xtxM15gPuALH-s412iZ_EbmA; expires=Mon, 04 Dec 2023 15:14:46 GMT; HttpOnly; Max-Age=900; Path=/; SameSite=lax"
+								},
+								{
+									"key": "set-cookie",
+									"value": "refresh_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlY2VjYzJlZC0wZGNlLTRlYzItODRjOC1kNmRmNjdhMzUxYjYiLCJpYXQiOjE3MDE3MDE5ODYsIm5iZiI6MTcwMTcwMTk4NiwianRpIjoiYjliZWE1MzAtMDllZC00NGYxLWE4ODUtOThlYWZiODlkMTNkIiwiZXhwIjoxNzAxNzA1NTg2LCJ0eXBlIjoicmVmcmVzaCJ9.jy9mm-BzcVdD6piC98gzjvjpj7cqjah6RAQXCEHYzZSoqNjOZMWy-IHhf3YBCNY7u371G3layYlDYmInoibOKA; expires=Mon, 04 Dec 2023 15:59:46 GMT; HttpOnly; Max-Age=3600; Path=/; SameSite=lax"
+								},
+								{
+									"key": "set-cookie",
+									"value": "logged_in=True; expires=Mon, 04 Dec 2023 15:14:46 GMT; Max-Age=900; Path=/; SameSite=lax"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "17f9dfa149e4775a05048fb227e9c139;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Dec 2023 14:59:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "392"
+								},
+								{
+									"key": "Expires",
+									"value": "Mon, 04 Dec 2023 14:59:46 GMT"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlY2VjYzJlZC0wZGNlLTRlYzItODRjOC1kNmRmNjdhMzUxYjYiLCJpYXQiOjE3MDE3MDE5ODYsIm5iZiI6MTcwMTcwMTk4NiwianRpIjoiZmIzZjMzYjctNjlmMS00MDUwLWE4YzctN2Q0Mjk0NDc4NzJlIiwiZXhwIjoxNzAxNzAyODg2LCJ0eXBlIjoiYWNjZXNzIiwiZnJlc2giOmZhbHNlfQ.WzyaOMFlSc4-GzXgCKShLK71T-EsxRY4292MF1Hl0cRR37yTIIO9Y3N-Q3Dtf2xtxM15gPuALH-s412iZ_EbmA\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"\r",
+									"    // Access Token\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('access_token');\r",
+									"    pm.expect(responseJson.access_token).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/auth/refresh",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh Token Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{host}}/api/auth/refresh",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "set-cookie",
+									"value": "access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlY2VjYzJlZC0wZGNlLTRlYzItODRjOC1kNmRmNjdhMzUxYjYiLCJpYXQiOjE3MDE3MDQ1MzgsIm5iZiI6MTcwMTcwNDUzOCwianRpIjoiNGQ0NTkzODUtY2JlYy00NzNmLWE1OWUtZmM2Zjc3NDA1MWFkIiwiZXhwIjoxNzAxNzA1NDM4LCJ0eXBlIjoiYWNjZXNzIiwiZnJlc2giOmZhbHNlfQ.eGjNnh8TZhp9RgM8APzIQUlF7UkysKDwSZavcOv6XJgRUYQ3S3JdHlex8LDZhHk1RLm7OqdBl8sU6t0YBQP9GQ; expires=Mon, 04 Dec 2023 15:57:18 GMT; HttpOnly; Max-Age=900; Path=/; SameSite=lax"
+								},
+								{
+									"key": "set-cookie",
+									"value": "logged_in=True; expires=Mon, 04 Dec 2023 15:57:18 GMT; Max-Age=900; Path=/; SameSite=lax"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "edc7939577db6a5f2ecd9044c3782411;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Dec 2023 15:42:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "373"
+								},
+								{
+									"key": "Expires",
+									"value": "Mon, 04 Dec 2023 15:42:18 GMT"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlY2VjYzJlZC0wZGNlLTRlYzItODRjOC1kNmRmNjdhMzUxYjYiLCJpYXQiOjE3MDE3MDQ1MzgsIm5iZiI6MTcwMTcwNDUzOCwianRpIjoiNGQ0NTkzODUtY2JlYy00NzNmLWE1OWUtZmM2Zjc3NDA1MWFkIiwiZXhwIjoxNzAxNzA1NDM4LCJ0eXBlIjoiYWNjZXNzIiwiZnJlc2giOmZhbHNlfQ.eGjNnh8TZhp9RgM8APzIQUlF7UkysKDwSZavcOv6XJgRUYQ3S3JdHlex8LDZhHk1RLm7OqdBl8sU6t0YBQP9GQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"\r",
+									"    // Status\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+									"    pm.expect(responseJson.status).to.be.an('string');\r",
+									"    pm.expect(responseJson.status).to.equals('success');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/auth/logout",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/auth/logout",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "set-cookie",
+									"value": "access_token=\"\"; expires=Tue, 19 Dec 2023 17:42:25 GMT; Max-Age=0; Path=/; SameSite=lax"
+								},
+								{
+									"key": "set-cookie",
+									"value": "refresh_token=\"\"; expires=Tue, 19 Dec 2023 17:42:25 GMT; Max-Age=0; Path=/; SameSite=lax"
+								},
+								{
+									"key": "set-cookie",
+									"value": "logged_in=\"\"; Max-Age=-1; Path=/; SameSite=lax"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "13b7700c0f59f6bc12df55b5cc64ad5c"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 17:42:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "Expires",
+									"value": "Tue, 19 Dec 2023 17:42:25 GMT"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    \r",
+									"    // Name\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('name');\r",
+									"    pm.expect(responseJson.name).to.be.an('string');\r",
+									"\r",
+									"    // Email\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('email');\r",
+									"    pm.expect(responseJson.email).to.be.an('string');\r",
+									"\r",
+									"    // User ID\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('id');\r",
+									"    pm.expect(responseJson.id).to.be.an('string');\r",
+									"\r",
+									"    // Created At\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('created_at');\r",
+									"    pm.expect(responseJson.created_at).to.be.an('string');\r",
+									"\r",
+									"    // Updated At\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('updated_at');\r",
+									"    pm.expect(responseJson.updated_at).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/users/me",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/users/me",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "2921e7f7252393b12b9b252795ef0f78;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 12:26:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "209"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Al-fariqy Raihan Azhwar\",\n    \"email\": \"alfariqyraihan@gmail.com\",\n    \"id\": \"ececc2ed-0dce-4ec2-84c8-d6df67a351b6\",\n    \"created_at\": \"2023-12-04T14:49:35.058771+00:00\",\n    \"updated_at\": \"2023-12-04T14:49:35.058771+00:00\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Upload",
+			"item": [
+				{
+					"name": "Upload FIle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    \r",
+									"    // Success\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('success');\r",
+									"    pm.expect(responseJson.success).to.be.an('boolean');\r",
+									"\r",
+									"    // Filename\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('filename');\r",
+									"    pm.expect(responseJson.filename).to.be.an('string');\r",
+									"\r",
+									"    // Message\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+									"    pm.expect(responseJson.message).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/F:/projects/ai projects/docpet/datasets/konjungtivis/U3NkGDc.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/upload/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"upload",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload FIle",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/F:/projects/ai projects/docpet/datasets/konjungtivis/U3NkGDc.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/upload/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"upload",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "5ba310b4141f069fdad5d59fbe33da02;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 12:35:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"filename\": \"U3NkGDc.jpg\",\n    \"message\": \"File uploaded successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pets",
+			"item": [
+				{
+					"name": "Get Pets",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"\r",
+									"    if(responseJson.length > 0)\r",
+									"        // Pet ID\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('id');\r",
+									"        pm.expect(responseJson[0].id).to.be.an('string');\r",
+									"\r",
+									"        // Pet Name\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('name');\r",
+									"        pm.expect(responseJson[0].name).to.be.an('string');\r",
+									"\r",
+									"        // Pet Age\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('age');\r",
+									"        pm.expect(responseJson[0].age).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/pets/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"pets",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Pets",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/pets/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"pets",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "2b221e04df99930136aa838c96549db4;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 12:45:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"931c728e-0dc2-4fc1-a62e-673c0691093e\",\n        \"name\": \"Kuskus\",\n        \"age\": \"4\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add Pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"\r",
+									"    // Pet ID\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('id');\r",
+									"    pm.expect(responseJson.id).to.be.an('string');\r",
+									"\r",
+									"    // Pet Name\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('name');\r",
+									"    pm.expect(responseJson.name).to.be.an('string');\r",
+									"\r",
+									"    // Pet Age\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('age');\r",
+									"    pm.expect(responseJson.age).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"kitlerr\",\r\n  \"gender\": \"Jantan\",\r\n  \"age\": \"999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/pets/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"pets",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Pet",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"kitlerr\",\r\n  \"gender\": \"Jantan\",\r\n  \"age\": \"999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/pets/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"pets",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "588590f3a97a192af55c76b1e61094b2;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 17:22:55 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"3657b86e-cd51-4e93-93b1-cfa84ace678b\",\n    \"name\": \"kitlerr\",\n    \"age\": \"999\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"\r",
+									"    // Pet Name\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('name');\r",
+									"    pm.expect(responseJson.name).to.be.an('string');\r",
+									"\r",
+									"    // Gender\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('gender');\r",
+									"    pm.expect(responseJson.gender).to.be.an('string');\r",
+									"\r",
+									"    // Pet Age\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('age');\r",
+									"    pm.expect(responseJson.age).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"blablabla\",\r\n    \"gender\": \"Jantan\",\r\n    \"age\": \"999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/pets/3657b86e-cd51-4e93-93b1-cfa84ace678b",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"pets",
+								"3657b86e-cd51-4e93-93b1-cfa84ace678b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Pet",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"blablabla\",\r\n    \"gender\": \"Jantan\",\r\n    \"age\": \"999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/pets/3657b86e-cd51-4e93-93b1-cfa84ace678b",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"pets",
+										"3657b86e-cd51-4e93-93b1-cfa84ace678b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "ad83a3bdea91544d081696ba149f6363;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 17:39:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"blablabla\",\n    \"gender\": \"Jantan\",\n    \"age\": \"999\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Doctors",
+			"item": [
+				{
+					"name": "Get Doctors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"\r",
+									"    if (responseJson.length > 0)\r",
+									"        // Doctor ID\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('id');\r",
+									"        pm.expect(responseJson[0].id).to.be.an('string');\r",
+									"\r",
+									"        // Doctor Name\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('name');\r",
+									"        pm.expect(responseJson[0].name).to.be.an('string');\r",
+									"\r",
+									"        // Role Detail\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('role_detail');\r",
+									"        pm.expect(responseJson[0].role_detail).to.be.an('string');\r",
+									"\r",
+									"        // Rating\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('rating');\r",
+									"        pm.expect(responseJson[0].rating).to.be.an('string');\r",
+									"\r",
+									"        // Price\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('price');\r",
+									"        pm.expect(responseJson[0].price).to.be.an('string');\r",
+									"\r",
+									"        // University\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('university');\r",
+									"        pm.expect(responseJson[0].university).to.be.an('string');\r",
+									"\r",
+									"        // Year Of Experience\r",
+									"        pm.expect(responseJson[0]).to.haveOwnProperty('yearofexperience');\r",
+									"        pm.expect(responseJson[0].yearofexperience).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/doctors/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"doctors",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Doctors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/doctors/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"doctors",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "ef9e04380527f01d23b4be33a75d767d;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 18:20:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "171"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"c869e753-6073-429b-9aa5-fb8e796e1b07\",\n        \"name\": \"string\",\n        \"role_detail\": \"string\",\n        \"rating\": \"string\",\n        \"price\": \"string\",\n        \"university\": \"string\",\n        \"yearofexperience\": \"string\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add Doctor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    \r",
+									"    // Message\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+									"    pm.expect(responseJson.message).to.be.an('string');\r",
+									"    pm.expect(responseJson.message).to.equals('Doctor created successfully');\r",
+									"\r",
+									"    // Doctor Name\r",
+									"    pm.expect(responseJson.doctor).to.haveOwnProperty('name');\r",
+									"    pm.expect(responseJson.doctor.name).to.be.an('string');\r",
+									"\r",
+									"    // Doctor Rating\r",
+									"    pm.expect(responseJson.doctor).to.haveOwnProperty('rating');\r",
+									"    pm.expect(responseJson.doctor.rating).to.be.an('string');\r",
+									"\r",
+									"    // Doctor Price\r",
+									"    pm.expect(responseJson.doctor).to.haveOwnProperty('price');\r",
+									"    pm.expect(responseJson.doctor.price).to.be.an('string');\r",
+									"\r",
+									"    // Doctor Role Detail\r",
+									"    pm.expect(responseJson.doctor).to.haveOwnProperty('role_detail');\r",
+									"    pm.expect(responseJson.doctor.role_detail).to.be.an('string');\r",
+									"\r",
+									"    // Doctor Time\r",
+									"    pm.expect(responseJson.doctor).to.haveOwnProperty('time');\r",
+									"    pm.expect(responseJson.doctor.time).to.be.an('string');\r",
+									"\r",
+									"    // Doctor University\r",
+									"    pm.expect(responseJson.doctor).to.haveOwnProperty('university');\r",
+									"    pm.expect(responseJson.doctor.university).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"budi\",\r\n  \"price\": \"50000\",\r\n  \"rating\": \"10\",\r\n  \"role\": \"software engineer\",\r\n  \"role_detail\": \"that engineer\",\r\n  \"day\": \"1\",\r\n  \"time\": \"1\",\r\n  \"location\": \"murren\",\r\n  \"university\": \"MIT\",\r\n  \"yearofexperience\": \"1000 tahun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/doctors/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"doctors",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Doctor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"budi\",\r\n  \"price\": \"50000\",\r\n  \"rating\": \"10\",\r\n  \"role\": \"software engineer\",\r\n  \"role_detail\": \"that engineer\",\r\n  \"day\": \"1\",\r\n  \"time\": \"1\",\r\n  \"location\": \"murren\",\r\n  \"university\": \"MIT\",\r\n  \"yearofexperience\": \"1000 tahun\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/doctors/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"doctors",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "4e6fc550695170cc084517d9d8481601;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 19:35:47 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "385"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Doctor created successfully\",\n    \"doctor\": {\n        \"price\": \"50000\",\n        \"name\": \"budi\",\n        \"rating\": \"10\",\n        \"role_detail\": \"that engineer\",\n        \"time\": \"1\",\n        \"university\": \"MIT\",\n        \"created_at\": \"2023-12-19T19:35:47.922357+00:00\",\n        \"id\": \"9a280df6-6c22-4e97-a81f-fac003f1cb44\",\n        \"role\": \"software engineer\",\n        \"day\": \"1\",\n        \"location\": \"murren\",\n        \"yearofexperience\": \"1000 tahun\",\n        \"updated_at\": \"2023-12-19T19:35:47.922357+00:00\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Disease Detection",
+			"item": [
+				{
+					"name": "Disease Detection",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    \r",
+									"    // Message\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+									"    pm.expect(responseJson.message).to.be.an('string');\r",
+									"    pm.expect(responseJson.message).to.equals('prediction success');\r",
+									"\r",
+									"    // Status Code\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('status_code');\r",
+									"    pm.expect(responseJson.status_code).to.be.an('number');\r",
+									"    pm.expect(responseJson.status_code).to.equals(200);\r",
+									"\r",
+									"    // Data\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+									"    pm.expect(responseJson.data).to.be.an('object');\r",
+									"\r",
+									"    // Disease Name\r",
+									"    pm.expect(responseJson.data).to.haveOwnProperty('name');\r",
+									"    pm.expect(responseJson.data.name).to.be.an('string');\r",
+									"\r",
+									"    // Disease Symptom\r",
+									"    pm.expect(responseJson.data).to.haveOwnProperty('symptom');\r",
+									"    pm.expect(responseJson.data.symptom).to.be.an('string');\r",
+									"\r",
+									"    // Disease Treatment\r",
+									"    pm.expect(responseJson.data).to.haveOwnProperty('treatment');\r",
+									"    pm.expect(responseJson.data.treatment).to.be.an('string');\r",
+									"\r",
+									"    // Disease Information\r",
+									"    pm.expect(responseJson.data).to.haveOwnProperty('information');\r",
+									"    pm.expect(responseJson.data.information).to.be.an('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/F:/projects/ai projects/docpet/datasets/konjungtivis/istockphoto-1130335146-170667a.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/disease_detection/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"disease_detection",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Disease Detection",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/F:/projects/ai projects/docpet/datasets/konjungtivis/istockphoto-1130335146-170667a.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/api/disease_detection/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"disease_detection",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-Cloud-Trace-Context",
+									"value": "0adf50e2b598777abcd98df22900be0b;o=1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Dec 2023 09:46:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Google Frontend"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3165"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"prediction success\",\n    \"status_code\": 200,\n    \"data\": {\n        \"name\": \"Mata Konjungtivitis\",\n        \"symptom\": \"Konjungtivitis ditandai oleh mata yang merah, bengkak, dan mungkin mengeluarkan lebih banyak air mata atau sekresi yang tidak normal, seperti lendir atau nanah. Hewan tersebut mungkin merasa tidak nyaman, menunjukkan tanda-tanda gatal atau sensasi terbakar di sekitar mata, yang bisa menyebabkan mereka menggaruk atau menggosok area tersebut. Kasus yang lebih parah dapat menyebabkan kelopak mata menutup atau menempel bersama karena pembengkakan atau sekresi. Sensitivitas terhadap cahaya juga bisa menjadi gejala. Penting untuk membawa hewan peliharaan ke dokter hewan untuk diagnosis yang tepat dan perawatan yang sesuai, karena konjungtivitis bisa disebabkan oleh berbagai faktor seperti infeksi bakteri, virus, alergi, atau iritasi oleh benda asing. Dokter hewan akan dapat menentukan penyebabnya dan meresepkan pengobatan yang sesuai untuk mengatasi kondisi mata tersebut.\",\n        \"treatment\": \"Pengobatan untuk konjungtivitis pada umumnya melibatkan pendekatan yang spesifik terhadap penyebabnya. Dokter hewan sering meresepkan tetes mata atau salep mata yang mengandung antibiotik, antiviral, atau bahan yang sesuai dengan penyebab infeksi mata tersebut. Selain itu, pembersihan mata secara teratur dengan larutan khusus atau air steril juga direkomendasikan untuk menghilangkan sekresi dan bahan iritan dari mata. Terapi kompres hangat dengan lap bersih dapat membantu mengurangi pembengkakan serta meningkatkan kenyamanan hewan. Pengobatan pendukung seperti antihistamin atau perubahan lingkungan juga mungkin direkomendasikan jika konjungtivitis disebabkan oleh alergi. Perawatan tambahan seperti antibiotik atau prosedur medis lainnya bisa diperlukan tergantung pada keparahan infeksi atau komplikasi yang mungkin terjadi. Penting untuk mengikuti instruksi dokter hewan dengan teliti dan tidak menggunakan obat-obatan tanpa persetujuan dokter, serta memantau perkembangan gejala. Jika gejalanya tidak membaik atau memburuk, segera konsultasikan kembali dengan dokter hewan untuk penanganan lebih lanjut.\",\n        \"information\": \"Konjungtivitis adalah kondisi di mana mata menjadi merah, bengkak, dan sering kali mengeluarkan cairan yang berlebihan, seperti air mata, lendir, atau nanah. Gejalanya juga dapat mencakup rasa gatal atau terbakar di sekitar mata, kelopak mata yang mungkin sulit untuk dibuka, serta sensitivitas terhadap cahaya. Penyebabnya bisa bervariasi, mulai dari infeksi bakteri atau virus seperti Chlamydia atau herpes, reaksi alergi terhadap debu atau serbuk sari, hingga iritasi karena benda asing yang masuk ke mata. Pengobatan tergantung pada penyebabnya; untuk infeksi, dokter hewan mungkin meresepkan tetes atau salep mata dengan antibiotik atau antiviral. Sementara itu, dalam kasus alergi, manajemen lingkungan dan terapi antihistamin bisa direkomendasikan. Membersihkan mata secara teratur dan menjaga kebersihan lingkungan hewan peliharaan juga penting. Penting untuk mendapatkan diagnosis yang tepat dari dokter hewan dan mengikuti perawatan yang diresepkan dengan cermat untuk memastikan pemulihan yang optimal bagi hewan peliharaan Anda.\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Default",
+			"item": [
+				{
+					"name": "Health Check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('status code should be 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('response header Content-Type should be application/json', () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+									"        .to.equals('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should be an object', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test('response body should have correct property and value', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    \r",
+									"    // Message\r",
+									"    pm.expect(responseJson).to.haveOwnProperty('message');\r",
+									"    pm.expect(responseJson.message).to.be.an('string');\r",
+									"    pm.expect(responseJson.message).to.equals('Hello Docpet!');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/checker",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"checker"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
